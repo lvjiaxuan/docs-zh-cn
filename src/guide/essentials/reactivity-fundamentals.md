@@ -343,12 +343,12 @@ console.log(proxy.nested === raw) // false
 
 1. 仅对对象类型有效（对象、数组和 `Map`、`Set` 这样的[集合类型](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects#%E4%BD%BF%E7%94%A8%E9%94%AE%E7%9A%84%E9%9B%86%E5%90%88%E5%AF%B9%E8%B1%A1)），而对 `string`、`number` 和 `boolean` 这样的 [原始类型](https://developer.mozilla.org/zh-CN/docs/Glossary/Primitive) 无效。
 
-2. 因为 Vue 的响应式系统是通过 property 访问进行追踪的，因此我们必须始终保持对该响应式对象的相同引用。这意味着我们不可以随意地 “替换” 一个响应式对象：
+2. 因为 Vue 的响应式系统是通过 property 访问进行追踪的，因此我们必须始终保持对该响应式对象的相同引用。这意味着我们不可以随意地“替换”一个响应式对象，因为这将导致对初始引用的响应性连接丢失：
 
    ```js
    let state = reactive({ count: 0 })
 
-   // 这行不通！
+   // 上面的引用 ({ count: 0 }) 将不再被追踪（响应性连接已丢失！）
    state = reactive({ count: 1 })
    ```
 
@@ -512,7 +512,7 @@ console.log(state.count) // 2
 console.log(count.value) // 1
 ```
 
-只有当嵌套在一个深层响应式对象内时，才会发生 ref 解包。当起作为[浅层响应式对象](/api/reactivity-advanced.html#shallowreactive)的 property 被访问时不会解包。
+只有当嵌套在一个深层响应式对象内时，才会发生 ref 解包。当其作为[浅层响应式对象](/api/reactivity-advanced.html#shallowreactive)的 property 被访问时不会解包。
 
 #### 数组和集合类型的 ref 解包 {#ref-unwrapping-in-arrays-and-collections}
 

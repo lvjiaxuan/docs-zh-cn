@@ -14,7 +14,11 @@ const nav = [
       { text: '教程', link: '/tutorial/' },
       { text: '范例', link: '/examples/' },
       { text: '快速开始', link: '/guide/quick-start' },
-      { text: '风格指南', link: '/style-guide/' },
+      // { text: '风格指南', link: '/style-guide/' },
+      {
+        text: 'Vue 2 Docs',
+        link: 'https://v2.vuejs.org'
+      },
       {
         text: '从 Vue 2 迁移',
         link: 'https://v3-migration.vuejs.org/'
@@ -37,10 +41,17 @@ const nav = [
       {
         text: '资源',
         items: [
-          { text: '合作伙伴', link: '/ecosystem/partners' },
+          { text: '合作伙伴', link: '/partners/' },
           { text: '主题', link: '/ecosystem/themes' },
           { text: '工作', link: 'https://vuejobs.com/?ref=vuejs' },
           { text: 'T-Shirt 商店', link: 'https://vue.threadless.com/' }
+        ]
+      },
+      {
+        text: '核心库',
+        items: [
+          { text: 'Vue Router', link: 'https://router.vuejs.org/' },
+          { text: 'Pinia', link: 'https://pinia.vuejs.org/' }
         ]
       },
       {
@@ -63,7 +74,10 @@ const nav = [
             text: 'Discord 聊天室',
             link: 'https://discord.com/invite/HBherRA'
           },
-          { text: '论坛', link: 'https://forum.vuejs.org/' },
+          {
+            text: 'GitHub 论坛',
+            link: 'https://github.com/vuejs/core/discussions'
+          },
           { text: 'DEV Community', link: 'https://dev.to/t/vue' }
         ]
       },
@@ -112,6 +126,11 @@ const nav = [
   {
     text: '赞助者',
     link: '/sponsor/'
+  },
+  {
+    text: 'Partners',
+    link: '/partners/',
+    activeMatch: `^/partners/`
   }
 ]
 
@@ -389,7 +408,7 @@ export const sidebar = {
           link: '/api/built-in-special-elements'
         },
         {
-          text: '特殊 Attributes',
+          text: '特殊 Attribute',
           link: '/api/built-in-special-attributes'
         }
       ]
@@ -403,7 +422,7 @@ export const sidebar = {
       ]
     },
     {
-      text: '进阶 APIs',
+      text: '进阶 API',
       items: [
         { text: '渲染函数', link: '/api/render-function' },
         { text: '服务端渲染', link: '/api/ssr' },

@@ -57,17 +57,17 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 ```vue-html
 <!-- 以英文逗号分隔的字符串 -->
 <KeepAlive include="a,b">
-  <component :is="view"></component>
+  <component :is="view" />
 </KeepAlive>
 
 <!-- 正则表达式 (需使用 `v-bind`) -->
 <KeepAlive :include="/a|b/">
-  <component :is="view"></component>
+  <component :is="view" />
 </KeepAlive>
 
 <!-- 数组 (需使用 `v-bind`) -->
 <KeepAlive :include="['a', 'b']">
-  <component :is="view"></component>
+  <component :is="view" />
 </KeepAlive>
 ```
 
@@ -110,7 +110,7 @@ onDeactivated(() => {
 </div>
 <div class="options-api">
 
-一个持续存在的组件可以通过 [`activated`](/api/options-lifecycle.html#activated) 和 [`deactovated`](/api/options-lifecycle.html#deactivated) 选项来注册相应的两个状态的生命周期钩子：
+一个持续存在的组件可以通过 [`activated`](/api/options-lifecycle.html#activated) 和 [`deactivated`](/api/options-lifecycle.html#deactivated) 选项来注册相应的两个状态的生命周期钩子：
 
 ```js
 export default {
@@ -129,12 +129,12 @@ export default {
 
 请注意：
 
-- <span class="composition-api">`onActivated`</span><span class="options-api">`activated`</span> 在组件挂载时也会调用，并且 <span class="composition-api">`onDectivated`</span><span class="options-api">`deactivated`</span> 在组件卸载时也会调用。
+- <span class="composition-api">`onActivated`</span><span class="options-api">`activated`</span> 在组件挂载时也会调用，并且 <span class="composition-api">`onDeactivated`</span><span class="options-api">`deactivated`</span> 在组件卸载时也会调用。
 
 - 这两个钩子不仅适用于 `<KeepAlive>` 缓存的根组件，也适用于缓存树中的后代组件。
 
 ---
 
-**相关内容**
+**参考**
 
 - [`<KeepAlive>` API 参考](/api/built-in-components.html#keepalive)

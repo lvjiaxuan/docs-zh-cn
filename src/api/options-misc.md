@@ -22,7 +22,7 @@
 
   当你在使用单文件组件时，组件已经会根据其文件名推导出其名称。举个例子，一个名为 `MyComponent.vue` 的文件会推导出显示名称为“MyComponent”。
 
-  另一种场景是裆一个组件通过 [`app.component`](/api/application.html#app-component) 被全局注册时，这个全局 ID 就自动被设为了其名称。
+  另一种场景是当一个组件通过 [`app.component`](/api/application.html#app-component) 被全局注册时，这个全局 ID 就自动被设为了其名称。
 
   使用 `name` 选项使你可以覆盖推导出的名称，或是在没有推导出名字时显式提供一个。（例如没有使用构建工具时，或是一个内联的非 SFC 式的组件）
 
@@ -98,7 +98,7 @@
 
   </div>
 
-- **相关内容：** [透传 attribute](/guide/components/attrs.html)
+- **参考：** [透传 attribute](/guide/components/attrs.html)
 
 ## components {#components}
 
@@ -128,7 +128,7 @@
   }
   ```
 
-- **相关内容：** [组件注册](/guide/components/registration.html)
+- **参考：** [组件注册](/guide/components/registration.html)
 
 ## directives {#directives}
 
@@ -163,4 +163,4 @@
 
   这个列表中的指令都在当前组件实例中可用。
 
-- **相关内容：** [自定义指令](/guide/reusability/custom-directives.html)
+- **参考：** [自定义指令](/guide/reusability/custom-directives.html)

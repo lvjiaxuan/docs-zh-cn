@@ -8,7 +8,7 @@ outline: deep
 
 ### 什么是 SSR？ {#what-is-ssr}
 
-Vue.js 是一个用于构建客户端应用的框架。默认情况下，Vue 组件在浏览器中生成和操作 DOM 作为输出。然而，我们也可以将相同的组件在服务端渲染成 HTML 字符串，直接返回给浏览器，最后再将静态的 HTML “激活” (hydrate) 为完全交互式的客户端应用。
+Vue.js 是一个用于构建客户端应用的框架。默认情况下，Vue 组件在浏览器中生成和操作 DOM 作为输出。然而，我们也可以将相同的组件在服务端渲染成 HTML 字符串，直接返回给浏览器，最后再将静态的 HTML“激活” (hydrate) 为完全交互式的客户端应用。
 
 一个由服务端渲染的 Vue.js 应用也可以被认为是“同构的”或“通用的”，因为应用的大部分代码同时运行在服务端**和**客户端。
 
@@ -134,7 +134,7 @@ server.listen(3000, () => {
 
 为了使客户端的应用可交互，Vue 需要执行一个**激活**步骤。在激活过程中，Vue 会创建一个与服务端完全相同的应用实例，然后将每个组件与它应该控制的 DOM 节点相匹配，并添加 DOM 事件监听器。
 
-为了在激活模式下挂载应用，我们应该使用 [`createSSRApp()`](/api/application.html#createssrapp) 而不是 `createApp()`:
+为了在激活模式下挂载应用，我们应该使用 [`createSSRApp()`](/api/application.html#createssrapp) 而不是 `createApp()`：
 
 ```js{2}
 // 该文件运行在浏览器中
@@ -168,7 +168,7 @@ export function createApp() {
 }
 ```
 
-该文件及其依赖项在服务器和客户端之间共享——我们称它们为**通用代码**。 编写通用代码时需要注意许多事项，我们将[在下面讨论](#writing-ssr-friendly-code)。
+该文件及其依赖项在服务器和客户端之间共享——我们称它们为**通用代码**。编写通用代码时需要注意许多事项，我们将[在下面讨论](#writing-ssr-friendly-code)。
 
 我们在客户端入口导入通用代码，创建应用程序并执行挂载：
 
@@ -229,7 +229,7 @@ server.get('/', (req, res) => {
 
 Vite 提供了内置的 [Vue 服务端渲染支持](https://vitejs.dev/guide/ssr.html)，但它在设计上是偏底层的。如果你想要直接使用 Vite，可以看看 [vite-plugin-ssr](https://vite-plugin-ssr.com/)，一个帮你抽象掉许多复杂细节的社区插件。
 
-你也可以在[这里](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-vue)查看一个使用手动配置的 Vue + Vite SSR 的示例项目，以它作为基础来构建。请注意，这种方式只有在你有丰富的 SSR 和构建工具经验，且相比于更顶层的架构，你更倾向于拥有完整控制权时，才推荐使用。
+你也可以在[这里](https://github.com/vitejs/vite/tree/main/playground/ssr-vue)查看一个使用手动配置的 Vue + Vite SSR 的示例项目，以它作为基础来构建。请注意，这种方式只有在你有丰富的 SSR 和构建工具经验，且相比于更顶层的架构，你更倾向于拥有完整控制权时，才推荐使用。
 
 ## 书写 SSR 友好的代码 {#writing-ssr-friendly-code}
 

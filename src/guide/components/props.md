@@ -305,7 +305,7 @@ export default {
 
 想要更改 prop 通常都符合以下两种场景：
 
-1. **prop 被用于传入初始值；而子组件想在之后将其作为一个局部数据属性。** 在这种情况下，最好是新定义一个局部数据属性，从 prop 上获取初始值即可：
+1. **prop 被用于传入初始值；而子组件想在之后将其作为一个局部数据属性**。在这种情况下，最好是新定义一个局部数据属性，从 prop 上获取初始值即可：
 
    <div class="composition-api">
 
@@ -335,7 +335,7 @@ export default {
 
    </div>
 
-2. **prop 以原始的形式传入，但还需作转换。** 在这种情况中，最好是基于该 prop 值定义一个计算属性：
+2. **prop 以原始的形式传入，但还需作转换**。在这种情况中，最好是基于该 prop 值定义一个计算属性：
 
    <div class="composition-api">
 
@@ -397,9 +397,10 @@ defineProps({
   // 对象类型的默认值
   propE: {
     type: Object,
-    // 一个返回默认对象/数组值
-    // 的工厂函数
-    default() {
+    // 对象或数组的默认值
+    // 必须从一个工厂函数返回。
+    // 该函数接收组件所接收到的原始 prop 作为参数。
+    default(rawProps) {
       return { message: 'hello' }
     }
   },
@@ -453,7 +454,6 @@ export default {
       // 工厂函数会收到组件所接收的原始 props
       // 作为参数
       default(rawProps) {
-        // default 函数接收传入的原始 props 作为参数
         return { message: 'hello' }
       }
     },
@@ -482,7 +482,9 @@ export default {
 
 - 所有 prop 默认都是可选的，除非声明了 `required: true`。
 
-- 未传递的 prop 会有一个缺省值 `undefined`。
+- 除 `Boolean` 外的未传递的可选 prop 将会有一个默认值 `undefined`。
+  
+- `Boolean` 类型的未传递 prop 将被转换为 `false`。你应该为它设置一个 `default` 值来确保行为符合预期。
 
 - 如果声明了 `default` 值，那么在 prop 的值被解析为 `undefined` 时，无论 prop 是未被传递还是显式指明的 `undefined`，都会改为 `default` 值。
 
